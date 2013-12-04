@@ -43,4 +43,4 @@ end
 announce( :strongswan, :xl2tpd )
 
 # set up the ipsec scenario
-node[:strongswan][:scenarios] << "l2tp-nat"
+node.default[:strongswan][:scenarios] << "l2tp-nat"
