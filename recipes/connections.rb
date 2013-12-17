@@ -38,7 +38,7 @@ node[:strongswan][:scenarios].each do |scenario|
   %w{ server client }.each do |cert|   
     execute "generate_#{cert}" do
       creates "#{certdir}#{cert}Cert.pem"
-      command "strongswan pki --gen --type rsa --size 4096 > #{certdir}#{cert}Cert.pem"
+      command "ipsec pki --gen --type rsa --size 4096 > #{certdir}#{cert}Cert.pem"
       not_if { ::File.exists?("#{certdir}#{cert}Cert.pem")}
       action :run
     end
