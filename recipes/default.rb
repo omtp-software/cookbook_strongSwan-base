@@ -2,7 +2,7 @@
 # Cookbook Name:: strongswan
 # Description:: Installs and launches a StrongSwan server.
 # Recipe:: default
-# Author:: Jerry Jackson (<jerry.w.jackson@gmail.com>)
+# Author:: Jerry Jackson (<jerry.jackson@acommitteeoflunatics.com>)
 #
 # Copyright 2012, Infochimps
 #
