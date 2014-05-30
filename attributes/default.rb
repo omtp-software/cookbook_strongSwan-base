@@ -12,7 +12,7 @@
 # - xl2tpd
 #   - configure masquerading via the xl2tp daemon, to allow easy Mac client access
 #   - probably going the out-of-band route for credentials
-# See http://www.strongswan.org/uml-testresults5.html for more scenario options; be
+# See http://www.strongswan.org/uml-testresults.html for more scenario options; be
 #   cautious and read everything multiple times. This stuff is quite convoluted.
 default[:strongswan][:scenarios]                = ['xauth-rsa-mode-config']
 
