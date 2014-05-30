@@ -1,5 +1,5 @@
 maintainer       "Jerry Jackson"
-maintainer_email "jerry.w.jacson@gmail.com"
+maintainer_email "jerry.jackson@acommitteeoflunatics.com"
 license          "All rights reserved"
 description      "Installs/Configures strongswan"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
