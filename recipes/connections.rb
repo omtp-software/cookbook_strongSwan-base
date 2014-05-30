@@ -34,6 +34,16 @@ node[:strongswan][:scenarios].each do |scenario|
   directory scenario_dir
   link("#{enabled}/#{scenario}") { to scenario_dir }
 
+  certdir = "/etc/ipsec.d/cacerts/"
+  %w{ server client }.each do |cert|   
+    execute "generate_#{cert}" do
+      creates "#{certdir}#{cert}Cert.pem"
+      command "ipsec pki --gen --type rsa --size 4096 > #{certdir}#{cert}Cert.pem"
+      not_if { ::File.exists?("#{certdir}#{cert}Cert.pem")}
+      action :run
+    end
+  end
+
   %w{ server.ipsec.conf server.ipsec.secrets
       client.ipsec.conf client.ipsec.secrets }.each do |fname|
     template "#{scenario_dir}/#{fname}" do
