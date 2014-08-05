@@ -12,8 +12,8 @@
 # - xl2tpd
 #   - configure masquerading via the xl2tp daemon, to allow easy Mac client access
 #   - probably going the out-of-band route for credentials
-# See http://www.strongswan.org/uml-testresults.html for more scenario options; be
-#   cautious and read everything multiple times. This stuff is quite convoluted.
+# See http://www.strongswan.org/uml-testresults4.html for more options, but be
+#   aware that you're flying on your own there
 default[:strongswan][:scenarios]                = ['xauth-rsa-mode-config']
 
 # Enable NAT-transversal
