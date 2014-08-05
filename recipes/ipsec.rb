@@ -22,6 +22,7 @@
 # install strongswan from package
 # Note: future versions will use the charon daemon only; watch out for
 #   changed package names and configuration formats on upgrade
+package "strongswan-ikev1"      # the old pluto daemon
 package "strongswan-ikev2"      # the new charon daemon
 
 # ipsec service definition
