@@ -8,9 +8,9 @@ version          IO.read(File.join(File.dirname(__FILE__), 'VERSION'))
 
 depends 'route53'
 depends 'yum-epel'
-depends 'strongSwan-scenarios'
+# depends 'strongSwan-scenarios'
 
-recommends 'strongSwan-pki'
+# recommends 'strongSwan-pki'
 
 supports 'amazon'
 supports 'centos', ">= 6"
