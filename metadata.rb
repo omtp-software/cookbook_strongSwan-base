@@ -15,7 +15,7 @@ depends 'yum-epel'
 supports 'amazon'
 supports 'centos', ">= 6.0"
 supports 'debian', ">= 7.0"
-supports 'fedora', ">= 19"
+supports 'fedora', ">= 19.0"
 supports 'oracle', ">= 6.0"
-supports 'redhat', ">= 6"
+supports 'redhat', ">= 6.0"
 supports 'ubuntu', ">= 14.04"
