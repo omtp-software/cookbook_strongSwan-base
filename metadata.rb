@@ -1,3 +1,4 @@
+name             "strongSwan-base"
 maintainer       "Jerry Jackson"
 maintainer_email "jerry.jackson@acommitteeoflunatics.com"
 license          "All rights reserved"
