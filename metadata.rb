@@ -12,7 +12,7 @@ depends 'strongSwan-scenarios'
 
 recommends 'strongSwan-pki'
 
-supports 'amazon', 
+supports 'amazon'
 supports 'centos', ">= 6"
 supports 'debian', ">= 7.0"
 supports 'fedora', ">= 19"
