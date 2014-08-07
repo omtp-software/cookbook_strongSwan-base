@@ -1,4 +1,7 @@
-# strongswan chef cookbook
+# strongSwan-base chef cookbook
+
+`strongSwan-base` and it's accompanying suite of dependant and recommended cookbooks is 
+the new direction we have decided upon for the future
 
 ## Some Important Notes
 
@@ -11,9 +14,12 @@ that client. Remembering this will save you many a headache.
 
 ## Requirements
 
-All code from the original strongswan cookbook has been split out into three repositories 
-to better follow best practices. These three repositories are named as follows:
+All code from the original strongswan cookbook has been split out into three seperate 
+cookbooks to better follow best practices. The three cookbooks included in this new
+suite have been (re)named as follows:
 
-`strongSwan-base`       - sets up a basic StrongSwan server and accompanying networks.
-`strongSwan-scenarios`  - one idempotent location for all available and active scenarios.
-`strongSwan-pki`        - allows generation of a simplyCA server and cert/key generation and distribution.
+- required to build a VPN
+-- `strongSwan-base`       - sets up a basic StrongSwan server and accompanying networks.
+-- `strongSwan-scenarios`  - one idempotent location for all available and active scenarios.
+- recommended if you want full functionality of your VPN
+-- `strongSwan-pki`        - allows generation of a simplyCA server and cert/key generation and distribution.
