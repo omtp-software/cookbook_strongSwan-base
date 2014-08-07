@@ -7,5 +7,15 @@ long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          IO.read(File.join(File.dirname(__FILE__), 'VERSION'))
 
 depends 'route53'
+depends 'yum-epel'
 depends 'strongSwan-scenarios'
+
 recommends 'strongSwan-pki'
+
+supports 'amazon', 
+supports 'centos', ">= 6"
+supports 'debian', ">= 7.0"
+supports 'fedora', ">= 19"
+supports 'oracle', ">= 6.0"
+supports 'redhat', ">= 6"
+supports 'ubuntu', ">= 14.04"

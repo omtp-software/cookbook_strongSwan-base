@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: strongswan
+# Cookbook Name:: strongSwan-base
 # Description:: Installs and launches a StrongSwan server.
 # Recipe:: ipsec
 # Author:: Jerry Jackson (<jerry.w.jackson@gmail.com>)
@@ -19,10 +19,18 @@
 # limitations under the License.
 #
 
+# if we're on AltLinux, Debian, Fedora, Oracle, Redhat, RHEL, or CentOS we need to install the EPEL 
+# yum repository.
+if %w{ altlinux, amazon, centos, debian, fedora, oracle, redhat, rhel }.include?(node["platform_family"])
+	node.default['yum']['epel-testing']['enabled'] = true
+	node.default['yum']['epel-testing']['managed'] = true
+	include_recipe 'yum-epel'
+end
+
 # install strongswan from package
 # Note: future versions will use the charon daemon only; watch out for
 #   changed package names and configuration formats on upgrade
-package "strongswan-ikev2"      # the new charon daemon
+package "strongswan"      # the new charon daemon
 
 # ipsec service definition
 service "ipsec" do

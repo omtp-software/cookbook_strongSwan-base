@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: strongswan
+# Cookbook Name:: strongSwan-base
 # Description:: Installs l2tp ipsec support for StrongSwan server.
 # Recipe:: xl2tp
 # Author:: Jerry Jackson (<jerry.w.jackson@gmail.com>)
@@ -19,7 +19,7 @@
 # limitations under the License.
 #
 
-include_recipe "strongswan::ipsec"
+include_recipe "strongSwan::ipsec"
 
 # install xl2tpd from package
 package "xl2tpd"
@@ -43,4 +43,4 @@ end
 announce( :strongswan, :xl2tpd )
 
 # set up the ipsec scenario
-node.default[:strongswan][:scenarios] << "l2tp-nat"
+node.default['strongSwan']['scenarios']['default'] << "l2tp-nat"

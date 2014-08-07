@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: strongswan
+# Cookbook Name:: strongSwan-base
 # Description:: Installs and launches a StrongSwan server.
 # Recipe:: default
 # Author:: Jerry Jackson (<jerry.jackson@acommitteeoflunatics.com>)

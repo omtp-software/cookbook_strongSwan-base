@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: strongswan
+# Cookbook Name:: strongSwan-base
 # Description:: Installs and launches a StrongSwan server.
 # Recipe:: connections
 # Author:: Nathaniel Eliot (<temujin9@infochimps.com>)
@@ -19,7 +19,7 @@
 # limitations under the License.
 #
 
-# Make sure this runs after all node[:strongswan][:scenarios] changes.
+# Make sure this runs after all node['strongSwan']['scenarios'] changes.
 # FIXME: This actually begs to be a resource, but I don't have enough
 #   bandwidth to handle it, and there are only two sources currently.
 
@@ -29,7 +29,7 @@ enabled       = "/etc/ipsec.d/conns-enabled"
 directory available
 directory enabled
 
-node[:strongswan][:scenarios].each do |scenario|
+node['strongSwan']['scenarios'].each do |scenario|
   scenario_dir  = "#{available}/#{scenario}"
   directory scenario_dir
   link("#{enabled}/#{scenario}") { to scenario_dir }

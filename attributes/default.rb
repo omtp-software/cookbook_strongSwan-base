@@ -14,36 +14,45 @@
 #   - probably going the out-of-band route for credentials
 # See http://www.strongswan.org/uml/testresults/ for more scenario options; be
 #   cautious and read everything multiple times. This stuff is quite convoluted.
-default[:strongswan][:scenarios]                = ['xauth-rsa-mode-config']
+
+default['strongSwan']['scenarios']                 = [
+														'scenario_ikev2_rw-cert', 
+														'scenario_ikev2_any-interface',
+														'scenario_ikev1_nat-rw',
+														'scenario_ikev1_xauth-id-rsa-config',
+														'scenario_ikev1_xauth-id-psk-config',
+														'scenario_ikev1_xauth-rsa'
+													 ]
+default['strongSwan']['scenarios']['default']      = ['scenario_ikev2_rw-cert']
 
 # Enable NAT-transversal
-default[:strongswan][:ipsec][:natt]             = 'yes'
+default['strongSwan']['ipsec']['natt']             = 'yes'
 # Use the older key-exchange protocol, to handle older clients
-default[:strongswan][:ipsec][:keyexchange]      = 'ikev1'
+default['strongSwan']['ipsec']['keyexchange']      = 'ikev2'
 # key exchange protocols
-default[:strongswan][:ipsec][:ike]              = '3des-sha256-modp1536'
-default[:strongswan][:ipsec][:esp]              = '3des-sha256'
+default['strongSwan']['ipsec']['ike']              = '3des-sha256-modp1536'
+default['strongSwan']['ipsec']['esp']              = '3des-sha256'
 # pre-shared key for '/etc/ipsec.secrets'
-default[:strongswan][:ipsec][:psk]              = 'wehavenobananastoday'
+default['strongSwan']['ipsec']['psk']              = 'wehavenobananastoday'
 
 ## Hackity hack, don't talk back
-default[:strongswan][:ipsec][:public_ip]        = node[:ipaddress] rescue '10.10.0.1'
-default[:strongswan][:ipsec][:private_ip]       = node[:cloud][:private_ips].first rescue '192.168.0.1'
+default['strongSwan']['ipsec']['public_ip']        = node['ipaddress'] rescue '10.10.0.1'
+default['strongSwan']['ipsec']['private_ip']       = node['cloud']['private_ips'].first rescue '192.168.0.1'
 
 # When we refer to local here, we mean relative to the server itself.
 #   Inside strongswan configuration, the convention is to call the local
 #   machine/network the left side, and the remote the right side. This
 #   is relative to the machine on which the configuration resides, which
 #   can be somewhat confusing at first.
-default[:strongswan][:ipsec][:local][:id]       = 'server@strongswan.org'
+default['strongSwan']['ipsec']['local']['id']       = 'server@strongswan.org'
 # We are protecting the entire VPC, not just this subnet
-default[:strongswan][:ipsec][:local][:subnet]   = '10.10.0.0/16'
-default[:strongswan][:ipsec][:remote][:id]        = 'client@strongswan.org'
+default['strongSwan']['ipsec']['local']['subnet']   = '10.10.0.0/16'
+default['strongSwan']['ipsec']['remote']['id']        = 'client@strongswan.org'
 # The virtual IP pool is outside the VPC
-default[:strongswan][:ipsec][:remote][:sourceip]  = '10.100.255.0/28'
+default['strongSwan']['ipsec']['remote']['sourceip']  = '10.100.255.0/28'
 
 # ## for '/etc/xl2tpd/xl2tpd.conf'
-# default[:strongswan][:l2tp][:ip_min] = '10.107.0.51'
-# default[:strongswan][:l2tp][:ip_max] = '10.107.0.100'
+# default['strongSwan']['l2tp']['ip_min'] = '10.107.0.51'
+# default['strongSwan']['l2tp']['ip_max'] = '10.107.0.100'
 # # for /etc/ppp/chap-secrets'
-# default[:strongswan][:l2tp][:chapsecret] = 'changeme'
+# default['strongSwan']['l2tp']['chapsecret'] = 'changeme'

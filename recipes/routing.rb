@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: strongswan
+# Cookbook Name:: strongSwan-base
 # Description:: Installs local NAT routing support for StrongSwan server.
 # Recipe:: routing
 # Author:: Jerry Jackson (<jerry.w.jackson@gmail.com>)
@@ -35,7 +35,7 @@ end
 
 # Add iptables masquerading rule
 execute 'iptables_masquerade' do
-  command "iptables --table nat --append POSTROUTING --source #{node[:strongswan][:ipsec][:local][:subnet]} -j MASQUERADE"
+  command "iptables --table nat --append POSTROUTING --source #{node['strongSwan']['ipsec']['local'][subnet']} -j MASQUERADE"
   action :nothing
 end
 
