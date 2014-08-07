@@ -13,7 +13,7 @@ depends 'yum-epel'
 # recommends 'strongSwan-pki'
 
 supports 'amazon'
-supports 'centos', ">= 6"
+supports 'centos', ">= 6.0"
 supports 'debian', ">= 7.0"
 supports 'fedora', ">= 19"
 supports 'oracle', ">= 6.0"
