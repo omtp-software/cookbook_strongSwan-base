@@ -19,18 +19,46 @@
 # limitations under the License.
 #
 
-# if we're on AltLinux, Debian, Fedora, Oracle, Redhat, RHEL, or CentOS we need to install the EPEL 
-# yum repository.
-if %w{ altlinux, amazon, centos, debian, fedora, oracle, redhat, rhel }.include?(node["platform_family"])
-	node.default['yum']['epel-testing']['enabled'] = true
-	node.default['yum']['epel-testing']['managed'] = true
-	include_recipe 'yum-epel'
+case node['platform_family']
+	when 'arch'
+		if (node['strongSwan']['use-network-manager'] == 'true')
+			packages = %w{ strongswan, networkmanager-strongswan }
+		else
+			packages = %w{ strongswan }
+		end
+	when 'debian'
+		include_recipe "apt"
+		if (node['strongSwan']['use-network-manager'] == 'true')
+			if platform?("ubuntu", "mint")
+				packages = %w{ strongswan, network-manager-strongswan }
+			else
+				packages = %w{ strongswan, strongswan-nm }
+			end
+		else
+			packages = %w{ strongswan }
+		end
+	when 'rhel'
+		node.default['yum']['epel-testing']['enabled'] = true
+		node.default['yum']['epel-testing']['managed'] = true
+		include_recipe 'yum-epel'
+		packages = %w{ strongswan }
+	when 'fedora'
+		if (node['strongSwan']['use-network-manager'] == 'true')
+			packages = %w{ strongswan, strongswan-charon-nm }
+		else
+			packages = %w{ strongswan }
+		end
+	when 'mac_os_x'
+		# put mac specific instructions here
+	when 'windows'
+		# install instructions with executable binary
+	else
+		Chef::Log.error "There are no packages available for this platform; please build strongSwan from source."
+		return
 end
-
-# install strongswan from package
-# Note: future versions will use the charon daemon only; watch out for
-#   changed package names and configuration formats on upgrade
-package "strongswan"      # the new charon daemon
+packages.each do |node_pkg|
+	package node_pkg
+end
 
 # ipsec service definition
 service "ipsec" do

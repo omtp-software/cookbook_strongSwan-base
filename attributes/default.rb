@@ -44,9 +44,9 @@ default['strongSwan']['ipsec']['private_ip']       = node['cloud']['private_ips'
 #   machine/network the left side, and the remote the right side. This
 #   is relative to the machine on which the configuration resides, which
 #   can be somewhat confusing at first.
-default['strongSwan']['ipsec']['local']['id']       = 'server@strongswan.org'
+default['strongSwan']['ipsec']['local']['id']         = 'server@strongswan.org'
 # We are protecting the entire VPC, not just this subnet
-default['strongSwan']['ipsec']['local']['subnet']   = '10.10.0.0/16'
+default['strongSwan']['ipsec']['local']['subnet']     = '10.10.0.0/16'
 default['strongSwan']['ipsec']['remote']['id']        = 'client@strongswan.org'
 # The virtual IP pool is outside the VPC
 default['strongSwan']['ipsec']['remote']['sourceip']  = '10.100.255.0/28'
@@ -56,3 +56,5 @@ default['strongSwan']['ipsec']['remote']['sourceip']  = '10.100.255.0/28'
 # default['strongSwan']['l2tp']['ip_max'] = '10.107.0.100'
 # # for /etc/ppp/chap-secrets'
 # default['strongSwan']['l2tp']['chapsecret'] = 'changeme'
+
+default['strongSwan']['use-network-manager']          = 'true'
