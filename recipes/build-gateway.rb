@@ -1,7 +1,7 @@
 #
 # Cookbook Name:: strongSwan-base
 # Description:: Installs and configures a StrongSwan clients
-# Recipe:: server
+# Recipe:: build-gateway
 # Author:: Jerry Jackson (<jerry.jackson@acommitteeoflunatics.com>)
 #
 # Copyright 2014, a Committee of Lunatics, LLC
@@ -18,3 +18,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
+# Install what's needed before building the network
+include_recipe "install-ipsec"
+include_recipe "enable-routing"

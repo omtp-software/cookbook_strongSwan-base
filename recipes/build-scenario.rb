@@ -1,7 +1,7 @@
 #
 # Cookbook Name:: strongSwan-base
 # Description:: Installs and configures a StrongSwan clients
-# Recipe:: client
+# Recipe:: build-scenario
 # Author:: Jerry Jackson (<jerry.jackson@acommitteeoflunatics.com>)
 #
 # Copyright 2014, a Committee of Lunatics, LLC
@@ -18,3 +18,4 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+

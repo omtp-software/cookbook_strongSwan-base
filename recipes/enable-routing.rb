@@ -1,7 +1,7 @@
 #
 # Cookbook Name:: strongSwan-base
 # Description:: Installs local NAT routing support for StrongSwan server.
-# Recipe:: routing
+# Recipe:: enable-routing
 # Author:: Jerry Jackson (<jerry.w.jackson@gmail.com>)
 #
 # Copyright 2012, Infochimps
