@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: strongSwan-base
-# Description:: Installs and configures a StrongSwan clients
+# Description:: Enables/Configures a StrongSwan scenario.
 # Recipe:: build-scenario
 # Author:: Jerry Jackson (<jerry.jackson@acommitteeoflunatics.com>)
 #

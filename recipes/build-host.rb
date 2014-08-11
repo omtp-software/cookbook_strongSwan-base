@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: strongSwan-base
-# Description:: Installs and configures a StrongSwan clients
+# Description:: Installs/Configures a StrongSwan host.
 # Recipe:: build-host
 # Author:: Jerry Jackson (<jerry.jackson@acommitteeoflunatics.com>)
 #

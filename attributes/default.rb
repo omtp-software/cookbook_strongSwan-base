@@ -16,22 +16,26 @@
 #   cautious and read everything multiple times. This stuff is quite convoluted.
 
 default['strongSwan']['scenarios']                 = [
-														'scenario_ikev2_rw-cert', 
-														'scenario_ikev2_any-interface',
-														'scenario_ikev1_nat-rw',
-														'scenario_ikev1_xauth-id-rsa-config',
-														'scenario_ikev1_xauth-id-psk-config',
-														'scenario_ikev1_xauth-rsa'
-													 ]
+                                                        'scenario_ikev2_rw-cert', 
+                                                        'scenario_ikev2_any-interface',
+                                                        'scenario_ikev1_nat-rw',
+                                                        'scenario_ikev1_xauth-id-rsa-config',
+                                                        'scenario_ikev1_xauth-id-psk-config',
+                                                        'scenario_ikev1_xauth-rsa'
+                                                     ]
 default['strongSwan']['scenarios']['default']      = ['scenario_ikev2_rw-cert']
 
 # Enable NAT-transversal
-default['strongSwan']['ipsec']['natt']             = 'yes'
+default['strongSwan']['ipsec']['nat']['enable']    = 'yes'
+default['strongSwan']['ipsec']['nat']['cidr']      = node['subnet'] rescue '10.10.0.0/16'
+
 # Use the older key-exchange protocol, to handle older clients
 default['strongSwan']['ipsec']['keyexchange']      = 'ikev2'
+
 # key exchange protocols
 default['strongSwan']['ipsec']['ike']              = '3des-sha256-modp1536'
 default['strongSwan']['ipsec']['esp']              = '3des-sha256'
+
 # pre-shared key for '/etc/ipsec.secrets'
 default['strongSwan']['ipsec']['psk']              = 'wehavenobananastoday'
 
@@ -45,16 +49,12 @@ default['strongSwan']['ipsec']['private_ip']       = node['cloud']['private_ips'
 #   is relative to the machine on which the configuration resides, which
 #   can be somewhat confusing at first.
 default['strongSwan']['ipsec']['local']['id']         = 'server@strongswan.org'
+
 # We are protecting the entire VPC, not just this subnet
 default['strongSwan']['ipsec']['local']['subnet']     = '10.10.0.0/16'
 default['strongSwan']['ipsec']['remote']['id']        = 'client@strongswan.org'
+
 # The virtual IP pool is outside the VPC
 default['strongSwan']['ipsec']['remote']['sourceip']  = '10.100.255.0/28'
-
-# ## for '/etc/xl2tpd/xl2tpd.conf'
-# default['strongSwan']['l2tp']['ip_min'] = '10.107.0.51'
-# default['strongSwan']['l2tp']['ip_max'] = '10.107.0.100'
-# # for /etc/ppp/chap-secrets'
-# default['strongSwan']['l2tp']['chapsecret'] = 'changeme'
 
 default['strongSwan']['use-network-manager']          = 'true'
