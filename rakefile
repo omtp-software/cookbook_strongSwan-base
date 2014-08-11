@@ -1,0 +1,4 @@
+require 'rake/clean'
+
+CLEAN.include('*.tmp')
+CLOBBER.include('*.tmp', 'build/*')
